@@ -1,46 +1,60 @@
 rules:
-  - id: R01
-    title: "Data Minimization"
-    text: "Only necessary personal data should be collected."
-  - id: R02
-    title: "Purpose Limitation"
-    text: "Data must be collected for specific lawful purposes."
-  - id: R03
-    title: "Lawful Processing"
-    text: "Processing of personal data must have a valid legal basis."
-  - id: R04
-    title: "Storage Limitation"
-    text: "Data should not be kept longer than needed."
-  - id: R05
-    title: "Access Control"
-    text: "Sensitive data must be accessible only to authorized staff."
-  - id: R06
-    title: "Encryption"
-    text: "Data must be encrypted at rest and in transit."
-  - id: R07
-    title: "Breach Notification"
-    text: "Users must be notified promptly in the event of a data breach."
-  - id: R08
-    title: "User Rights"
-    text: "Users should have rights to access, correct, and delete their data."
-  - id: R09
-    title: "Third-Party Compliance"
-    text: "Vendors must follow the same data protection rules."
+  - id: R1
+    title: Confidentiality Clause
+    text: "Does the agreement include a confidentiality clause protecting proprietary information?"
+
+  - id: R2
+    title: Liability Limitation
+    text: "Does the document limit liability to direct damages only?"
+
+  - id: R3
+    title: Data Protection
+    text: "Does the contract include data security and GDPR-related obligations?"
+
+  - id: R4
+    title: Termination Rights
+    text: "Is there a clear termination clause specifying notice period?"
+
+  - id: R5
+    title: Payment Terms
+    text: "Are the payment terms clearly defined including due dates?"
+
+  - id: R6
+    title: Dispute Resolution
+    text: "Does the document specify arbitration or dispute resolution mechanisms?"
+
+  - id: R7
+    title: Indemnity
+    text: "Is there a mutual indemnification clause?"
+
+  - id: R8
+    title: Governing Law
+    text: "Does the contract specify governing jurisdiction?"
+
+  - id: R9
+    title: Non-Compete
+    text: "Does the agreement contain a reasonable non-compete restriction?"
+
   - id: R10
-    title: "Privacy by Design"
-    text: "Systems must be built with privacy protections from the start."
+    title: Audit Rights
+    text: "Does the company have the right to audit the vendor's compliance?"
+
   - id: R11
-    title: "Audit Logging"
-    text: "Access and actions on sensitive data must be logged."
+    title: Intellectual Property
+    text: "Is ownership of deliverables clearly explained?"
+
   - id: R12
-    title: "Employee Training"
-    text: "Employees must receive mandatory privacy training."
+    title: Access Control
+    text: "Does the policy require role-based access?"
+
   - id: R13
-    title: "Incident Response Plan"
-    text: "Organization must maintain a tested incident response plan."
+    title: Breach Notification
+    text: "Is there a requirement to notify in case of data breach?"
+
   - id: R14
-    title: "Cross-Border Transfers"
-    text: "Data transferred internationally must have legal safeguards."
+    title: Subcontractors
+    text: "Are subcontractor obligations clearly outlined?"
+
   - id: R15
-    title: "Policy Transparency"
-    text: "Users must receive clear and accessible privacy policies."
+    title: Insurance Requirements
+    text: "Does the vendor need to maintain liability insurance?"
