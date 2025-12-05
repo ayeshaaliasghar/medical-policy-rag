@@ -1,1 +1,46 @@
 rules:
+  - id: R01
+    title: "Data Minimization"
+    text: "Only necessary personal data should be collected."
+  - id: R02
+    title: "Purpose Limitation"
+    text: "Data must be collected for specific lawful purposes."
+  - id: R03
+    title: "Lawful Processing"
+    text: "Processing of personal data must have a valid legal basis."
+  - id: R04
+    title: "Storage Limitation"
+    text: "Data should not be kept longer than needed."
+  - id: R05
+    title: "Access Control"
+    text: "Sensitive data must be accessible only to authorized staff."
+  - id: R06
+    title: "Encryption"
+    text: "Data must be encrypted at rest and in transit."
+  - id: R07
+    title: "Breach Notification"
+    text: "Users must be notified promptly in the event of a data breach."
+  - id: R08
+    title: "User Rights"
+    text: "Users should have rights to access, correct, and delete their data."
+  - id: R09
+    title: "Third-Party Compliance"
+    text: "Vendors must follow the same data protection rules."
+  - id: R10
+    title: "Privacy by Design"
+    text: "Systems must be built with privacy protections from the start."
+  - id: R11
+    title: "Audit Logging"
+    text: "Access and actions on sensitive data must be logged."
+  - id: R12
+    title: "Employee Training"
+    text: "Employees must receive mandatory privacy training."
+  - id: R13
+    title: "Incident Response Plan"
+    text: "Organization must maintain a tested incident response plan."
+  - id: R14
+    title: "Cross-Border Transfers"
+    text: "Data transferred internationally must have legal safeguards."
+  - id: R15
+    title: "Policy Transparency"
+    text: "Users must receive clear and accessible privacy policies."
