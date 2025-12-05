@@ -1,28 +1,29 @@
-from pypdf import PdfReader
 import jsonlines, os
 
-os.makedirs("data/processed", exist_ok=True)
+INP = "data/processed/compliance_docs.jsonl"
+OUT = "data/processed/compliance_chunks.jsonl"
 
-def extract_text_from_pdf(path):
-    reader = PdfReader(path)
-    text = ""
-    for page in reader.pages:
-        page_text = page.extract_text()
-        if page_text:
-            text += page_text + "\n"
-    return text
+def chunk_text(text, size=250, overlap=80):
+    words = text.split()
+    chunks = []
+    i = 0
+    while i < len(words):
+        chunk = " ".join(words[i:i+size])
+        chunks.append(chunk)
+        i += size - overlap
+    return chunks
 
-pdf_folder = "data/pdfs"
-output = "data/processed/compliance_docs.jsonl"
+items = []
+with jsonlines.open(INP) as r:
+    for doc in r:
+        chunks = chunk_text(doc["text"])
+        for i, c in enumerate(chunks):
+            items.append({
+                "text": c,
+                "metadata": {"source": doc["id"], "chunk_id": i}
+            })
 
-docs = []
-for file in os.listdir(pdf_folder):
-    if file.endswith(".pdf"):
-        full_path = os.path.join(pdf_folder, file)
-        txt = extract_text_from_pdf(full_path)
-        docs.append({"id": file, "text": txt})
+with jsonlines.open(OUT, "w") as w:
+    w.write_all(items)
 
-with jsonlines.open(output, "w") as w:
-    w.write_all(docs)
-
-print("Extracted", len(docs), "PDF documents.")
+print("Chunks saved:", len(items))
