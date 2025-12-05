@@ -1,28 +1,28 @@
+import jsonlines, os
 from sentence_transformers import SentenceTransformer
 from langchain.schema import Document
 from langchain_community.vectorstores import FAISS
-import jsonlines, os
 
-st = SentenceTransformer("all-MiniLM-L6-v2")
+INP = "data/processed/compliance_chunks.jsonl"
+OUT = "data/index"
 
-class STEmb:
+os.makedirs(OUT, exist_ok=True)
+
+embedder = SentenceTransformer("all-MiniLM-L6-v2")
+
+class EMBS:
     def embed_documents(self, docs):
-        return st.encode(docs, convert_to_numpy=True).tolist()
+        return embedder.encode(docs, convert_to_numpy=True).tolist()
     def embed_query(self, q):
-        return st.encode([q], convert_to_numpy=True)[0].tolist()
+        return embedder.encode([q], convert_to_numpy=True)[0].tolist()
 
-emb = STEmb()
+emb = EMBS()
 
-items = []
-with jsonlines.open("data/processed/compliance_chunks.jsonl") as r:
-    items = list(r)
+items = list(jsonlines.open(INP))
 
-texts = [x["text"] for x in items]
-metas = [x["metadata"] for x in items]
-
-docs = [Document(page_content=t, metadata=m) for t,m in zip(texts, metas)]
+docs = [Document(page_content=i["text"], metadata=i["metadata"]) for i in items]
 
 db = FAISS.from_documents(docs, emb)
-db.save_local("data/index")
+db.save_local(OUT)
 
-print("FAISS index saved.")
+print("FAISS index saved to", OUT)
